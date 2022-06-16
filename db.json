@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "name": "Collar de nuevo",
+      "amount": "5",
+      "price_unit": "5",
+      "cost_unit": "5",
+      "tag": "collar",
+      "description": "otra prueba",
+      "composite": "false",
+      "id": 1
+    },
+    {
+      "name": "Cosas",
+      "amount": "7",
+      "price_unit": "3",
+      "cost_unit": "2",
+      "tag": "collar",
+      "description": "cosas para probar",
+      "composite": "false",
+      "id": 2
+    },
+    {
+      "name": "Nueva prueba",
+      "amount": "5",
+      "price_unit": "555",
+      "cost_unit": "5",
+      "tag": "NAVIGATE",
+      "description": "",
+      "composite": "false",
+      "id": 3
+    }
+  ]
+}

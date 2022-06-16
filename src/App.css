@@ -1,0 +1,15 @@
+.App {
+  display: grid;
+  grid-template-columns: 16% 84%;
+  background: azure;
+  color: midnightblue;
+}
+footer {
+  color: aliceblue;
+  display: block;
+  width: 100%;
+}
+
+.navbar {
+  background-color: #3a3a3d;
+}
