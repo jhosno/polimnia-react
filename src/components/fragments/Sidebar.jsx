@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 
 const Sidebar = () => {
     return (
-        <section className="sidebar">
+        <section className="sidebar bg-slate-900 row-span-12">
             <nav>
                 <div>
                     <Link to='/'>🌀 Polimnia</Link>

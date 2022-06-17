@@ -10,7 +10,6 @@ import Main from './components/layout/Main'
 import SellsIndex from './components/sell/SellsIndex'
 
 
-//https://demos.creative-tim.com/notus-nextjs/landing
 
 function App() {
   
