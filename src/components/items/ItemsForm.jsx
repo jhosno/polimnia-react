@@ -42,7 +42,8 @@ const ItemsForm = () => {
         composite: Yup.boolean()
     })
     return (
-        <div>
+        <div className='px-4 md:px-10 mx-auto w-full'>
+        
             <Formik
                 initialValues={
                     {

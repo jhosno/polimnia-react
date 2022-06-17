@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-//import './App.css'
 import HomeIndex from './components/home/HomeIndex'
+import ContactsIndex from './components/contacts/ContactsIndex'
+import ContactsForm from './components/contacts/ContactsForm'
 import InvoicesIndex from './components/invoices/InvoicesIndex'
 import ItemsIndex from './components/items/ItemsIndex'
 import ItemsForm from './components/items/ItemsForm'
@@ -32,7 +33,10 @@ function App() {
           </Route>
           <Route path='/invoices' element={<Main/>}>
             <Route index element={<InvoicesIndex/>}/>
-            
+          </Route>
+          <Route path='/contacts' element={<Main/>}>
+            <Route index element={<ContactsIndex/>}/>
+            <Route path="add" element={<ContactsForm/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
