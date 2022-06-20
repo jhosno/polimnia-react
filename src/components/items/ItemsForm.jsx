@@ -2,14 +2,15 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import React from 'react';
 import * as Yup from 'yup'
 import Alerts from '../fragments/Alerts';
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+import Bottons from "../fragments/Bottons"
 
 
 
 const ItemsForm = () => {
     const navigate = useNavigate();
     const handleSubmit = async (values) => {
-        
+
         try {
             const url = 'http://localhost:4000/items'
             const respuesta = await fetch(url,
@@ -33,141 +34,191 @@ const ItemsForm = () => {
         name: Yup.string().required('El nombre del producto es obligatorio')
             .min(3, 'El Nombre es muy corto')
             .max(20, 'El Nombre es muy largo'),
-        amount: Yup.number('El valor debe ser un número').positive('Debe ser un número positivo').integer('Debe ser un número entero, sin decimal'),
-        price_unit: Yup.number('El valor debe ser un número').round('floor').positive('Debe ser un número positivo'),
-        cost_unit: Yup.number('El valor debe ser un número').round('floor').positive('Debe ser un número positivo'),
+        amount: Yup.number().positive('Debe ser un número positivo').integer('Debe ser un número entero, sin decimal').typeError('El valor debe ser un número'),
+        price_unit: Yup.number().round('floor').positive('Debe ser un número positivo').typeError('El valor debe ser un número'),
+        cost_unit: Yup.number().round('floor').positive('Debe ser un número positivo').typeError('El valor debe ser un número'),
         tag: '',
         description: Yup.string()
-            .min(3, 'El Nombre es muy corto'),
+            .min(3, 'La descripción es muy corta'),
         composite: Yup.boolean()
     })
     return (
-        <div className='px-4 md:px-10 mx-auto w-full'>
-        
-            <Formik
-                initialValues={
-                    {
-                        name: '',
-                        amount: '',
-                        price_unit: '',
-                        cost_unit: '',
-                        tag: '',
-                        description: '',
-                        composite: 'false'
-                    }
-                }
-                validationSchema={ItemsSchema}
-                onSubmit={async (values, {resetForm}) => {await handleSubmit(values); resetForm()}}
-            >
+        <div className='items-center flex justify-center'>
+            <div className='w-full lg:w-8/12 px-4'>
+                <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
+                    <div className="rounded-t bg-white mb-0 px-6 py-6">
+                        <div className="text-center flex justify-between">
+                            <h6 className="text-slate-700 text-xl font-bold">Nuevo ítem</h6>
+                            <Bottons message={'cosas'} type={'info'} />
 
-                {(prop) => {
-                    const { errors, touched } = prop
-                    return (
-                        <Form>
-
-                            <div>
-                                <label htmlFor="name">Nombre</label>
-                                <Field
-                                    type="text"
-                                    name="name"
-                                    id="name"
-                                    placeholder="Nombre del ítems"
-                                />
-                                <ErrorMessage
-                                    name='name'
-                                />
-                                {errors.name && touched.name ?
-                                    (<Alerts message={errors.name} type='error' />) : null
+                        </div>
+                    </div>
+                    <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
+                        <Formik
+                            initialValues={
+                                {
+                                    name: '',
+                                    amount: '',
+                                    price_unit: '',
+                                    cost_unit: '',
+                                    tag: '',
+                                    description: '',
+                                    composite: 'false'
                                 }
-                            </div>
-                            <div>
-                                <label htmlFor="amount">Cantidad</label>
-                                <Field
-                                    type="text"
-                                    name="amount"
-                                    id="amount"
-                                    placeholder="cantidad"
-                                />
-                                {errors.amount && touched.amount ?
-                                    (<Alerts message={errors.amount} type='error' />) : null
-                                }
-                            </div>
-                            <div>
-                                <label htmlFor="price_unit">Precio unitario</label>
-                                <Field
-                                    type="text"
-                                    name="price_unit"
-                                    id="price_unit"
-                                    placeholder="Precio unitario"
-                                />
-                                <ErrorMessage
-                                    name='price_unit'
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="cost_unit">Costo unitario</label>
-                                <Field
-                                    type="text"
-                                    name="cost_unit"
-                                    id="cost_unit"
-                                    placeholder="Costo unitario"
-                                />
-                                <ErrorMessage
-                                    name='cost_unit'
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="tag">Etiquetas</label>
-                                <Field
-                                    type="text"
-                                    name="tag"
-                                    id="tag"
-                                    placeholder="Etiquetas del producto"
-                                />
-                                <ErrorMessage
-                                    name='tag'
-                                />
-                                {/*Listar, seleccionar y crear nuevas etiquetas
-                            https://formik.org/docs/guides/arrays
-                            */}
-                            </div>
-                            <div>
-                                <label htmlFor="description">Descripción</label>
-                                <Field
-                                    as='textarea'
-                                    type="text"
-                                    name="description"
-                                    id="description"
-                                    placeholder="Descripción del producto"
-                                />
-                                <ErrorMessage
-                                    name='description'
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="composite">Compuesto</label>
-                                <Field
-                                    type="checkbox"
-                                    name="composite"
-                                    id="composite"
-                                    placeholder="Es un ítem compuesto"
-                                />
-                                <ErrorMessage
-                                    name='composite'
-                                />
-                            </div>
-                            {/*Si composite es true abrir un nuevo campo que permite listar y seleccionar los items que componen el elemento*/}
-                            <Field
-                                type="submit"
-                                value="Agregar"
-                            />
-                        </Form>
-                    )
-                }
-                }
+                            }
+                            validationSchema={ItemsSchema}
+                            onSubmit={async (values, { resetForm }) => { await handleSubmit(values); resetForm() }}
+                        >
 
-            </Formik>
+                            {(prop) => {
+                                const { errors, touched, values } = prop
+                                return (
+                                    <Form className='mt-5 flex flex-wrap flex-col'>
+                                        <div className="flex flex-wrap my-3">
+                                            <div className="w-full lg:w-6/12 pr-4">
+                                                <div className=''>
+                                                    <label htmlFor="name" className="block uppercase text-blueGray-600 text-xs font-bold mb-2">Nombre</label>
+                                                    <Field
+                                                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                        type="text"
+                                                        name="name"
+                                                        id="name"
+                                                        placeholder="Nombre del ítems"
+                                                    />
+
+                                                    {errors.name && touched.name ?
+                                                        (<Alerts message={errors.name} type='error' />) : null
+                                                    }
+                                                </div>
+
+                                            </div>
+                                            <div className="w-full lg:w-6/12">
+                                                <div className=''>
+                                                    <label htmlFor="amount" className="block uppercase text-blueGray-600 text-xs font-bold mb-2">Cantidad</label>
+                                                    <Field
+                                                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                        type="text"
+                                                        name="amount"
+                                                        id="amount"
+                                                        placeholder="cantidad"
+                                                    />
+                                                    {errors.amount && touched.amount ?
+                                                        (<Alerts message={errors.amount} type='error' />) : null
+                                                    }
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+                                        <div className="flex flex-wrap my-3">
+                                            <div className="w-full lg:w-6/12 pr-4">
+
+                                                <div className=''>
+                                                    <label htmlFor="price_unit" className="block uppercase text-blueGray-600 text-xs font-bold mb-2">Precio unitario</label>
+                                                    <Field
+                                                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                        type="text"
+                                                        name="price_unit"
+                                                        id="price_unit"
+                                                        placeholder="Precio unitario"
+                                                    />
+                                                    {errors.price_unit && touched.price_unit ?
+                                                        (<Alerts message={errors.price_unit} type='error' />) : null
+                                                    }
+                                                </div>
+                                            </div>
+                                            <div className="w-full lg:w-6/12">
+
+                                                <div className=''>
+                                                    <label htmlFor="cost_unit" className="block uppercase text-blueGray-600 text-xs font-bold mb-2">Costo unitario</label>
+                                                    <Field
+                                                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                        type="text"
+                                                        name="cost_unit"
+                                                        id="cost_unit"
+                                                        placeholder="Costo unitario"
+                                                    />
+                                                    {errors.cost_unit && touched.cost_unit ?
+                                                        (<Alerts message={errors.cost_unit} type='error' />) : null
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex flex-wrap my-3">
+                                            <div className="w-full lg:w-6/12 pr-4 ">
+
+                                                <div className=''>
+                                                    <label htmlFor="tag" className="block uppercase text-blueGray-600 text-xs font-bold mb-2">Etiquetas</label>
+                                                    <Field
+                                                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                        type="text"
+                                                        name="tag"
+                                                        id="tag"
+                                                        placeholder="Etiquetas del producto"
+                                                    />
+                                                    {errors.tag && touched.tag ?
+                                                        (<Alerts message={errors.tag} type='error' />) : null
+                                                    }
+                                                    {/*Listar, seleccionar y crear nuevas etiquetas
+                                https://formik.org/docs/guides/arrays
+                                */}
+                                                </div>
+                                            </div>
+                                            <div className="w-full lg:w-6/12 px-4">
+
+                                                <div className='my-4'>
+                                                    <label htmlFor="composite" className="block uppercase text-blueGray-600 text-xs font-bold mb-2">Compuesto</label>
+                                                    <Field
+                                                        type="checkbox"
+                                                        name="composite"
+                                                        id="composite"
+
+                                                    />
+                                                    {`${values.composite}`}
+                                                    {errors.composite && touched.composite ?
+                                                        (<Alerts message={errors.composite} type='error' />) : null
+                                                    }
+                                                </div>
+                                             
+                                                
+                                                {/*Si composite es true abrir un nuevo campo que permite listar y seleccionar los items que componen el elemento*/}
+                                            </div>
+                                        </div>
+
+                                        <div className='my-4'>
+                                            <label htmlFor="description" className="block uppercase text-blueGray-600 text-xs font-bold mb-2">Descripción</label>
+                                            <Field
+                                                className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                                as='textarea'
+                                                type="text"
+                                                name="description"
+                                                id="description"
+                                                placeholder="Descripción del producto"
+                                            />
+                                            {errors.description && touched.description ?
+                                                (<Alerts message={errors.description} type='error' />) : null
+                                            }
+                                        </div>
+                                        <Field
+                                            className="bg-indigo-700 hover:bg-indigo-600 active:bg-indigo-600 text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150 cursor-pointer"
+                                            type="submit"
+                                            value="Agregar"
+                                        />
+                                    </Form>
+                                )
+                            }
+                            }
+
+                        </Formik>
+
+                    </div>
+                </div>
+            </div>
+
         </div>
+
     );
 };
 
