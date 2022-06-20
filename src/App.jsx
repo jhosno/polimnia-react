@@ -9,6 +9,7 @@ import ItemsForm from './components/items/ItemsForm'
 import PurchaseIndex from './components/purchase/PurchaseIndex'
 import Main from './components/layout/Main'
 import SellsIndex from './components/sell/SellsIndex'
+import ItemsShow from './components/items/ItemsShow'
 
 
 
@@ -30,6 +31,8 @@ function App() {
           <Route path='/items' element={<Main/>}>
             <Route index element={<ItemsIndex/>}/>
             <Route path='add' element={<ItemsForm/>}/>
+            <Route path='edit/:id' element={<ItemsForm/>}/>
+            <Route path=':id' element={<ItemsShow/>}/>
           </Route>
           <Route path='/invoices' element={<Main/>}>
             <Route index element={<InvoicesIndex/>}/>

@@ -29,6 +29,16 @@
       "description": "",
       "composite": "false",
       "id": 3
+    },
+    {
+      "name": "anillos",
+      "amount": "5",
+      "price_unit": "1",
+      "cost_unit": "1",
+      "tag": "",
+      "description": "Anillos bohos",
+      "composite": "false",
+      "id": 4
     }
   ]
 }

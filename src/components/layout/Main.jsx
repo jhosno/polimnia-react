@@ -12,7 +12,8 @@ const Main = () => {
             <Sidebar></Sidebar>
             
                 <Navbar></Navbar>
-                <div className="row-span-10 row-span-10 col-span-4 pt-10 items-center flex justify-center">
+                <div className="row-span-10 col-span-4 pt-10 ">
+                
                     <Outlet></Outlet>
                 </div>
                 <Footer></Footer>
