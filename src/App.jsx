@@ -5,11 +5,13 @@ import ContactsIndex from './components/contacts/ContactsIndex'
 import ContactsForm from './components/contacts/ContactsForm'
 import InvoicesIndex from './components/invoices/InvoicesIndex'
 import ItemsIndex from './components/items/ItemsIndex'
-import ItemsForm from './components/items/ItemsForm'
+
 import PurchaseIndex from './components/purchase/PurchaseIndex'
 import Main from './components/layout/Main'
 import SellsIndex from './components/sell/SellsIndex'
 import ItemsShow from './components/items/ItemsShow'
+import ItemsCreate from './components/items/ItemsCreate'
+import ItemsEdit from './components/items/ItemsEdit'
 
 
 
@@ -30,8 +32,8 @@ function App() {
           </Route>
           <Route path='/items' element={<Main/>}>
             <Route index element={<ItemsIndex/>}/>
-            <Route path='add' element={<ItemsForm/>}/>
-            <Route path='edit/:id' element={<ItemsForm/>}/>
+            <Route path='add' element={<ItemsCreate/>}/>
+            <Route path='edit/:id' element={<ItemsEdit/>}/>
             <Route path=':id' element={<ItemsShow/>}/>
           </Route>
           <Route path='/invoices' element={<Main/>}>
