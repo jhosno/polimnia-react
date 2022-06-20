@@ -28,8 +28,9 @@ const Item = ({ item }) => {
             </td>
 
             <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                <Bottons message="Ver" type="info" to={"/items/"+id}></Bottons>
-                <Bottons message="Editar" type="warning"></Bottons>
+                <Bottons message="Ver" type="info" to={`/items/${id}`}></Bottons>
+                <Bottons message="Editar" type="warning" to={`/items/edit/${id}`}></Bottons>
+                
                 <Bottons message="Eliminar" type="error"></Bottons>
                 
                 {/*<a className="text-blueGray-500 py-1 px-3" href="#pablo">
