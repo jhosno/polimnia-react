@@ -12,7 +12,7 @@ const ItemsShow = () => {
         setLoading(!loading)
         const getItem = async () => {
             try {
-                const url = `http://localhost:4000/items/${id}`
+                let url = `${import.meta.env.VITE_API_URL}items/${id}`
                 const consulta = await fetch(url)
                 const resultado = await consulta.json()
                 setItem(resultado)

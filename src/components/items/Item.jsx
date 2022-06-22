@@ -7,7 +7,7 @@ import Bottons from '../fragments/Bottons';
 
 const Item = ({ item, handleSubmitDelete}) => {
     const { name, price_unit, description, amount, id } = item
-    const url = 'http://localhost:4000/items/'
+    
     return (
         <tr className='hover:bg-slate-100 items-center content-center' >
             <td className="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">

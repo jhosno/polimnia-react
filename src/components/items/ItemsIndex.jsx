@@ -4,7 +4,7 @@ import Item from './Item';
 
 const ItemsIndex = () => {
     const [items, setitems] = useState([])
-    const url = 'http://localhost:4000/items/'
+    let url = `${import.meta.env.VITE_API_URL}items/`
     useEffect(async () => {
 
         const consulta = await fetch(url)

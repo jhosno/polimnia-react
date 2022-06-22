@@ -1,6 +1,7 @@
 import React from 'react';
 
 const HomeIndex = () => {
+    console.log(import.meta.env)
     return (
         <div>
             <div className=" bg-blueGray-800 ">

@@ -11,7 +11,8 @@ const ItemsForm = ({ item }) => {
     const navigate = useNavigate();
     const handleSubmit = async (values) => {
         try {
-            let url = 'http://localhost:4000/items'
+            
+            let url = `${import.meta.env.VITE_API_URL}items/`
             let respuesta
             if (item.id) {
                 respuesta = await fetch(`${url}/${item.id}`,
