@@ -27,39 +27,28 @@ const ItemsShow = () => {
     }, [])
     return (
         loading ? <p>Cargando... </p> : Object.keys(item).length == 0 ? <p>No hay nada que mostrar </p> :
-
             (
-                <div className="w-full mb-12 px-4">
+                <div className='items-center flex justify-center'>
+                    <div className='w-full lg:w-8/12 px-4'>
+                        <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
+                            <div className="rounded-t bg-white mb-0 px-6 py-6">
+                                <div className="text-center flex justify-between">
+                                    <h6 className="text-slate-700 text-xl font-bold">Nuevo Ítem</h6>
+                                    <Bottons message={'cosas'} type={'info'} />
 
-                    <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
-                        <div className="rounded-t mb-0 px-4 py-3 border-0 ">
-                            <div className="flex flex-wrap items-center flex-row">
-                                <div className="relative w-full px-4 max-w-full flex-grow flex-1 flex-row flex justify-between">
-                                    <h3 className="font-semibold text-lg text-blueGray-700">Inventario | {item.name} </h3>
-                                    <div>
-                                    <Bottons message="Editar" type="warning" to={`/items/edit/${item.id}`}></Bottons>
+                                </div>
+                            </div>
+                            <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
+                                <div>
+                                    <ItemsForm item={item} setItem={setItem}></ItemsForm>
 
-                                        <Bottons message="Eliminar" type="error"></Bottons>
-
-                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="block w-full overflow-x-auto p-5 bg-slate-100">
-                            <p><span className='font-bold text-gray-800 uppercase'>Descripción :</span> {item.description}</p>
-                            <p><span className='font-bold text-gray-800 uppercase'>Precio unitario :</span> {item.price_unit}</p>
-                            <p><span className='font-bold text-gray-800 uppercase'>Costo unitario :</span> {item.cost_unit}</p>
-                            <p><span className='font-bold text-gray-800 uppercase'>tags :</span> {item.tag}</p>
-                            <p><span className='font-bold text-gray-800 uppercase'>Cantidad :</span> {item.amount}</p>
-                            <p><span className='font-bold text-gray-800 uppercase'>Compuesto :</span> {item.composite}</p>
-                        </div>
+
                     </div>
-
-
                 </div>
-
             )
-        
     );
 };
 

@@ -1,7 +1,8 @@
 {
+  "tags": [],
   "items": [
     {
-      "name": "Collar de nuevo",
+      "name": "item update 5",
       "amount": "5",
       "price_unit": "5",
       "cost_unit": "5",
@@ -39,6 +40,46 @@
       "description": "Anillos bohos",
       "composite": "false",
       "id": 4
+    },
+    {
+      "name": "Collar de test edit",
+      "amount": "5",
+      "price_unit": "5",
+      "cost_unit": "5",
+      "tag": "collar",
+      "description": "otra prueba",
+      "composite": false,
+      "id": 5
+    },
+    {
+      "name": "Zarcillos",
+      "amount": "5",
+      "price_unit": "2.0",
+      "cost_unit": "2.0",
+      "tag": "zarcillos",
+      "description": "",
+      "composite": "false",
+      "id": 6
+    },
+    {
+      "name": "nuevo intento",
+      "amount": "",
+      "price_unit": "",
+      "cost_unit": "",
+      "tag": "",
+      "description": "",
+      "composite": "false",
+      "id": 7
+    },
+    {
+      "name": "item create 7",
+      "amount": "",
+      "price_unit": "",
+      "cost_unit": "",
+      "tag": "",
+      "description": "",
+      "composite": "false",
+      "id": 8
     }
   ]
 }
