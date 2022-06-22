@@ -10,14 +10,11 @@ const ItemsForm = ({ item }) => {
 
     const navigate = useNavigate();
     const handleSubmit = async (values) => {
-        
         try {
             let url = 'http://localhost:4000/items'
             let respuesta
             if (item.id) {
-                
-                
-                 respuesta = await fetch(`${url}/${item.id}`,
+                respuesta = await fetch(`${url}/${item.id}`,
                     {
                         method: 'PUT',
                         body: JSON.stringify(values),
@@ -27,7 +24,7 @@ const ItemsForm = ({ item }) => {
                     })
             } else {
                 console.log('Creando...')
-                 respuesta = await fetch(url,
+                respuesta = await fetch(url,
                     {
                         method: 'POST',
                         body: JSON.stringify(values),
@@ -35,13 +32,12 @@ const ItemsForm = ({ item }) => {
                             'Content-type': 'application/json',
                         },
                     })
-    
-                }
-                const resultado = await respuesta.json()
-                //Si estatus es igual a 201, todo OK
-                console.log(respuesta.status)
-      
-            navigate('/items') 
+
+            }
+            const resultado = await respuesta.json()
+            //Si estatus es igual a 201, todo OK
+            console.log(respuesta.status)
+            navigate('/items')
         } catch (error) {
             console.log(error)
         }
@@ -213,7 +209,7 @@ const ItemsForm = ({ item }) => {
                         <Field
                             className="bg-indigo-700 hover:bg-indigo-600 active:bg-indigo-600 text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150 cursor-pointer"
                             type="submit"
-                            value={item?.name ? "Actualizar": "Agregar"}
+                            value={item?.name ? "Actualizar" : "Agregar"}
                         />
                     </Form>
                 )

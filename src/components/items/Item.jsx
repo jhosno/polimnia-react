@@ -5,7 +5,7 @@ import Bottons from '../fragments/Bottons';
 
 
 
-const Item = ({ item }) => {
+const Item = ({ item, handleSubmitDelete}) => {
     const { name, price_unit, description, amount, id } = item
     const url = 'http://localhost:4000/items/'
     return (
@@ -30,8 +30,9 @@ const Item = ({ item }) => {
             <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
                 <Bottons message="Ver" type="info" to={`/items/${id}`}></Bottons>
                 <Bottons message="Editar" type="warning" to={`/items/edit/${id}`}></Bottons>
+                <button type="button" className="bg-rose-700 hover:bg-rose-600 active:bg-rose-600 text-white font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150 cursor-pointer" onClick={()=> handleSubmitDelete(id)}>Eliminar</button>
                 
-                <Bottons message="Eliminar" type="error"></Bottons>
+    
                 
                 {/*<a className="text-blueGray-500 py-1 px-3" href="#pablo">
                     <i className="fas fa-ellipsis-v">

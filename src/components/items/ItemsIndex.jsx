@@ -12,6 +12,24 @@ const ItemsIndex = () => {
         console.log(resultado)
         setitems(resultado)
     }, [])
+    const handleSubmitDelete = async id => {
+        console.log('Delete...' + id)
+        const confirmValue = confirm("'tas segurx que quieres eliminar esta vaina?")
+        if (confirmValue) {
+            try {
+                const consulta = await fetch(`http://localhost:4000/items/${id}`,
+                    {
+                        method: 'DELETE',
+                    })
+                const resultado = await consulta.json()
+                console.log(consulta)
+                const clearItems = items.filter(item => item.id != id)
+                setitems(clearItems)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    }
     return (
         <div className="w-full mb-12 px-4">
             <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
@@ -52,7 +70,7 @@ const ItemsIndex = () => {
 
 
                             {items.map(item => (
-                                <Item item={item} key={item.id} />
+                                <Item item={item} key={item.id} handleSubmitDelete={handleSubmitDelete} />
                             ))}
 
 

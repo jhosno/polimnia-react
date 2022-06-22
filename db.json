@@ -22,16 +22,6 @@
       "id": 2
     },
     {
-      "name": "Nueva prueba",
-      "amount": "5",
-      "price_unit": "555",
-      "cost_unit": "5",
-      "tag": "NAVIGATE",
-      "description": "",
-      "composite": "false",
-      "id": 3
-    },
-    {
       "name": "anillos",
       "amount": "5",
       "price_unit": "1",
@@ -50,36 +40,6 @@
       "description": "otra prueba",
       "composite": false,
       "id": 5
-    },
-    {
-      "name": "Zarcillos",
-      "amount": "5",
-      "price_unit": "2.0",
-      "cost_unit": "2.0",
-      "tag": "zarcillos",
-      "description": "",
-      "composite": "false",
-      "id": 6
-    },
-    {
-      "name": "nuevo intento",
-      "amount": "",
-      "price_unit": "",
-      "cost_unit": "",
-      "tag": "",
-      "description": "",
-      "composite": "false",
-      "id": 7
-    },
-    {
-      "name": "item create 7",
-      "amount": "",
-      "price_unit": "",
-      "cost_unit": "",
-      "tag": "",
-      "description": "",
-      "composite": "false",
-      "id": 8
     }
   ]
 }
